@@ -36,7 +36,7 @@ const Modal = () => {
           {products.map((category, index) => (
             <div
               key={index}
-              onClick={()=>dispatch()}
+            
               className="mb-2 cursor-pointer text-white pl-4 text-lg"
             >
               {category}

@@ -7,12 +7,12 @@ import { SearchProducts } from "../../Slices/Homepage/homepageSlice";
 const Navbar = ({handle}) => {
   const [input,setInput]=useState('');
   const { amount } = useSelector((store) => store.cart);
-
+ const navigate=useNavigate();
   const dispatch=useDispatch();
   const handleSubmit=(e)=>{
      e.preventDefault();
     dispatch(SearchProducts(input));
-    
+     navigate('/Search');
   }
     return (
       <div className="flex justify-around shadow-lg items-center bg-yellow-500 h-20 p-4 sticky ">
