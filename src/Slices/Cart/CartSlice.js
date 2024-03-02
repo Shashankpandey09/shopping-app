@@ -6,8 +6,9 @@ const initialState = {
   cartItem: [],
   amount: 0,
   total: 0,
-  isLoading: true,
+  itemId: [],
   searchItem: [],
+
 };
 
 export const cartSlice = createSlice({
@@ -15,15 +16,8 @@ export const cartSlice = createSlice({
   initialState,
   reducers: {
     AddItem: (state, action) => {
-      const newItem = action.payload[action.payload.length - 1];
-
-      const isDuplicate =
-        state.cartItem.length > 0 &&
-        state.cartItem.some((product) => product && product.id === newItem.id);
-
-      if (!isDuplicate) {
-        state.cartItem = action.payload;
-      }
+      state.cartItem.push(action.payload);
+      state.itemId=[...state.itemId,action.payload.id]
     },
 
     clearCart: (state) => {
@@ -33,6 +27,7 @@ export const cartSlice = createSlice({
     removeItem: (state, action) => {
       const updateCart = state.cartItem.filter((item) => item.id !== action.payload);
       state.cartItem = updateCart;
+      state.itemId= state.itemId.filter((item) => item !== action.payload)
     },
 
     increment: (state, { payload }) => {

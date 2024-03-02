@@ -1,25 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { homeProducts } from "../../Slices/Homepage/homepageSlice";
-import { AddItem } from "../../Slices/Cart/CartSlice";
+import { AddItem ,removeItem} from "../../Slices/Cart/CartSlice";
 
 const CategoryProduct = () => {
-  const [product, setProduct] = useState([]);
   const dispatch = useDispatch();
   const { cartItem: { products } } = useSelector((store) => store.HomeProduct);
+  const {itemId}=useSelector((store)=>store.cart)
 
   useEffect(() => {
     dispatch(homeProducts());
   }, []);
 
-  useEffect(() => {
-    if (product.length > 0) {
-      dispatch(AddItem(product));
-    }
-  }, [product]);
+  
 
   const Add = (item) => {
-    setProduct((prevProducts) => [...prevProducts, item]);
+    dispatch(AddItem(item))
   };
 
   return (
@@ -47,12 +43,17 @@ const CategoryProduct = () => {
               <p className="text-gray-800">Stock: {item.stock}</p>
               <p className="text-green-600">Discount: {item.discountPercentage}% off</p>
               <div className="flex justify-end absolute bottom-2 right-1">
-                <button
+                {itemId.includes(item.id)?<button
+                  className="mt-4 bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 focus:outline-none"
+                 onClick={()=>dispatch(removeItem(item.id))}
+                >
+                 Remove 
+                </button>:<button
                   className="mt-4 bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 focus:outline-none"
                   onClick={() => Add(item)}
                 >
                   Add to Cart
-                </button>
+                </button>}
               </div>
             </div>
           </div>
