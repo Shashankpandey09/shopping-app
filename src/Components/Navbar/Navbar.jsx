@@ -15,14 +15,14 @@ const Navbar = ({handle}) => {
      navigate('/Search');
   }
     return (
-      <div className="flex justify-around shadow-lg items-center bg-yellow-500 h-20 p-4 sticky ">
+      <div className="flex justify-around shadow-lg items-center bg-black h-20 p-4 sticky ">
         
         <div className="flex items-center cursor-pointer  text-black" >
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28" fill="currentColor" onClick={()=>dispatch(openSideBar())}>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28" fill="white" onClick={()=>dispatch(openSideBar())}>
             <path d="M3 4H21V6H3V4ZM3 11H21V13H3V11ZM3 18H21V20H3V18Z"></path>
           </svg>
           <Link to="/Home">
-          <p className="text-2xl font-bold ml-2  ">Shoppy</p></Link>
+          <p className="text-2xl font-bold ml-2  text-white  ">Shoppy</p></Link>
         </div>
         <div className="flex items-center justify-between">
           <div className="search mr-4 bg-white flex justify-end  rounded-md w-96 shadow-md  hover:shadow-red-700 transition-shadow duration-200 ">
@@ -50,7 +50,7 @@ const Navbar = ({handle}) => {
             </svg>
             <div className="cart-item w-4 h-4 absolute top-0   rounded-full text-xs bg-white text-black text-center">{amount}</div>
             </Link>
-            <button className="text-black text-xl" onClick={handle}>logout</button>
+            <button className="text-white text-xl" onClick={handle}>logout</button>
           
           </div>
         </div>

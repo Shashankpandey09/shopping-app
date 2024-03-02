@@ -4,6 +4,7 @@ import './App.css'
 import Login from './Components/login/Login';
 import Vedio from './Components/VedioPage/Vedio';
 import {CategoryProduct,Cart,Search,ProductSingle} from '../src/pages/index'
+import React, { lazy, Suspense } from 'react';
 
 
 
@@ -12,6 +13,7 @@ import {CategoryProduct,Cart,Search,ProductSingle} from '../src/pages/index'
 function App() {
   return (
    <>
+   
    <Router>
     <Routes>
     <Route exact path='/' element={<Vedio/>}/>
