@@ -4,10 +4,12 @@ import { memo } from 'react';
 const Caro = () => {
   return (
     <Carousel 
-      showArrows={true}
-      infiniteLoop={true}
-      interval={1800}
-      autoPlay={true}
+    showArrows={true}
+  infiniteLoop={true}
+  interval={4000} // Increase the interval
+  autoPlay={true}
+  stopOnHover={false}
+  transitionTime={1000}
     >
       <div className="h-[84vh] w-screen">
         <img src="/p1.jpg" className=" object-cover w-full h-full rounded-md"  loading="lazy"  alt="Product 1" />
