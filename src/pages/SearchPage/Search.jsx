@@ -1,26 +1,15 @@
 // Search.jsx
 
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { AddSearch } from "../../Slices/Cart/CartSlice";
+import { AddItem,removeItem } from "../../Slices/Cart/CartSlice";
 import { useNavigate } from "react-router-dom";
 
 const Search = () => {
   const { search } = useSelector((store) => store.HomeProduct);
-  const [product, setProduct] = useState([]);
+  const {itemId}=useSelector((store)=>store.cart)
   const dispatch=useDispatch();
-  const navigate=useNavigate();
-
-  useEffect(() => {
-    if (product.length > 0) {
-      dispatch(AddSearch(product));
-    }
-  }, [product]);
-
-  const Add = (item) => {
-    setProduct((prevProducts) => [...prevProducts, item])
-  
-  }
+  const navigate=useNavigate(); 
   return (
     <><div className="container mx-auto p-4">
         <h2 className="text-3xl font-bold inline mx-4 text-black mb-4">Search Results:</h2>
@@ -39,12 +28,17 @@ const Search = () => {
                     <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
                     <p className="text-gray-700 mb-2">{item.description}</p>
                     <p className="text-blue-500 font-bold">${item.price}</p>
-                    <button
+                 {itemId.includes(item.id)?   <button
                       className="bg-blue-500 text-white px-4 py-2 rounded-full mt-4"
-                      onClick={() => Add(item)}
+                      onClick={() => dispatch(removeItem(item.id))}
+                    >
+                   Remove
+                    </button>:<button
+                      className="bg-blue-500 text-white px-4 py-2 rounded-full mt-4"
+                      onClick={() =>  dispatch(AddItem(item))}
                     >
                       Add to Cart
-                    </button>
+                    </button>}
                   </div>
                 </div>
               ))}

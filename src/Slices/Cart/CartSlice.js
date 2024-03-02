@@ -42,16 +42,7 @@ export const cartSlice = createSlice({
       state.amount = state.cartItem.length;
     },
 
-    AddSearch: (state, action) => {
-      const newItem = action.payload[action.payload.length - 1];
-      const isDuplicate =
-        state.cartItem.length > 0 &&
-        state.cartItem.some((product) => product && product.id === newItem.id);
-
-      if (!isDuplicate) {
-        state.cartItem = action.payload;
-      }
-    },
+    
   },
 });
 
