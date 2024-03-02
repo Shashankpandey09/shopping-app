@@ -4,17 +4,20 @@ import { homeProducts } from "../../Slices/Homepage/homepageSlice";
 import { AddItem, removeItem } from "../../Slices/Cart/CartSlice";
 import { toast, ToastContainer, Zoom } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Carousel } from 'react-responsive-carousel';
-import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import Caro from "../../Components/caros/Caro";
+
 
 const CategoryProduct = () => {
   const dispatch = useDispatch();
   const { cartItem: { products } } = useSelector((store) => store.HomeProduct);
   const { itemId } = useSelector((store) => store.cart);
+  
 
   useEffect(() => {
     dispatch(homeProducts());
   }, [dispatch]);
+
+
 
   const handleAddToCart = (item) => {
     dispatch(AddItem(item));
@@ -52,24 +55,7 @@ const CategoryProduct = () => {
 
   return (
     <div >
-       <Carousel 
-        showArrows={true}
-      
-        infiniteLoop={true}
-        interval={2000}
-        autoPlay={true}
-      
-      >
-        <div className="h-[82vh] w-screen">
-          <img src="/products1.webp" className="object-cover w-full h-full rounded-md" alt="Product 1" />
-        </div>
-        <div className="h-[82vh] w-screen">
-          <img src="/product2.webp" className="object-cover w-full h-full rounded-md" alt="Product 2" />
-        </div>
-        <div className="h-[82vh] w-screen">
-          <img src="/nike.webp" className="object-cover w-full h-full rounded-md" alt="Product 3" />
-        </div>
-      </Carousel>
+    <Caro/>
       <div className="bg-black w-[40%] text-center md:w-[20%] rounded-lg ml-4 p-4 mt-4">
         <p className="text-white text-xl font-bold">See Our Products</p>
       </div>
