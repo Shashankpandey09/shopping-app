@@ -11,20 +11,20 @@ const Caro = () => {
   stopOnHover={false}
   transitionTime={1000}
     >
-      <div className="h-[84vh] w-screen">
-        <img src="/p1.jpg" className=" object-cover w-full h-full rounded-md"  loading="lazy"  alt="Product 1" />
+      <div className="h-[84vh] w-full">
+        <img src="/p1.jpg" className=" object-cover w-full h-full "  loading="lazy"  alt="Product 1" />
       </div>
       <div className="h-[84vh] w-screen bg-slate-300">
-        <img src="/p2.jpg" className="object-contain w-full h-full rounded-md"   loading="lazy"alt="Product 2" />
+        <img src="/p2.jpg" className="object-contain w-full h-full "   loading="lazy"alt="Product 2" />
       </div>
       <div className="h-[84vh] w-screen  bg-red-700">
-        <img src="/p3.jpg" className="w-full h-full object-contain rounded-md"  loading="lazy"  alt="Product 3" />
+        <img src="/p3.jpg" className="w-full h-full object-contain "  loading="lazy"  alt="Product 3" />
       </div>
       <div className="h-[84vh] w-screen  bg-white">
-        <img src="/p4.jpg" className="w-full h-full object-contain rounded-md "  loading="lazy" alt="Product 3" />
+        <img src="/p4.jpg" className="w-full h-full object-contain"  loading="lazy" alt="Product 3" />
       </div>
       <div className="h-[84vh] w-screen  bg-yellow-300">
-        <img src="/p5.jpg" className="w-full h-full object-contain rounded-md  "  loading="lazy"  alt="Product 3" />
+        <img src="/p5.jpg" className="w-full h-full object-contain "  loading="lazy"  alt="Product 3" />
       </div>
     </Carousel>
   )

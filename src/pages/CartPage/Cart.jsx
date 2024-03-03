@@ -34,11 +34,14 @@ const Cart = () => {
   const dispatch = useDispatch();
   const {cartItem}=useSelector((store)=>store.cart)
     // Parse the string to an array
+  
     const navigate=useNavigate();
  
   const handleRemove = (productId) => {
     
     dispatch(removeItem(productId))
+
+  
   
   };
 
