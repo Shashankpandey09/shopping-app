@@ -47,7 +47,7 @@ export const cartSlice = createSlice({
     },
 
     calculateTotal: (state) => {
-      state.amount = JSON.parse(localStorage.getItem('cart')).length;
+      state.amount = state.cartItem.length;
     },
 
     
