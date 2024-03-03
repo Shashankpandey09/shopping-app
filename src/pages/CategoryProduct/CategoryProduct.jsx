@@ -62,7 +62,7 @@ const CategoryProduct = () => {
         {products && products.map((item) => (
           <div
             key={item.id}
-            className="max-w-md mx-auto w-[90vw]   md:w-fit flex flex-col gap-2  bg-white  text-gray-800 rounded-md overflow-hidden shadow-md border mb-6 transform transition-transform duration-300 hover:scale-105"
+            className="max-w-md mx-auto w-[90vw]   md:w-fit flex flex-col gap-2   text-gray-800 rounded-md overflow-hidden shadow-md  mb-6 transform transition-transform duration-300 hover:scale-105"
           > 
             <div className="relative w-full h-full ">
             <LazyLoad height={150} width="auto"  threshold={0.95}>
