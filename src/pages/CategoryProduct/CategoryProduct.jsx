@@ -22,9 +22,9 @@ const CategoryProduct = () => {
       position: 'top-right',
       autoClose: 1000,
       style: {
-        marginTop:window.innerWidth<=768? '20%':'0%', // Set the vertical offset to 40% from the top
-        position:'absolute',
-        left:'20%'
+        marginTop: window.innerWidth <= 768 ? '20%' : '0%',
+        position: 'absolute',
+        left: '20%'
       },
       hideProgressBar: false,
       newestOnTop: false,
@@ -45,9 +45,9 @@ const CategoryProduct = () => {
       autoClose: 1000,
       hideProgressBar: false,
       style: {
-        marginTop:window.innerWidth<=768? '20%':'0%', // Set the vertical offset to 40% from the top
-        position:'absolute',
-        left:'20%'
+        marginTop: window.innerWidth <= 768 ? '20%' : '0%',
+        position: 'absolute',
+        left: '20%'
       },
       newestOnTop: false,
       closeOnClick: true,
@@ -61,32 +61,30 @@ const CategoryProduct = () => {
   };
 
   return (
-    <div className="bg-black text-white overflow-hidden md:overflow-auto">
-   <div className="hidden md:block">
-  <Caro />
-</div>
-      <div className="bg-gray-900 w-[40%] text-center md:w-[20%] rounded-lg ml-4 mb-10 p-4 mt-4">
-        <p className="text-white text-xl font-bold">See Our Products</p>
+    <div style={{ backgroundColor: 'rgb(247, 232, 229)' }} className=" text-white overflow-hidden md:overflow-auto">
+      <div className="hidden md:block">
+        <Caro />
       </div>
-     
+      <div className="bg-[rgb(221,177,114)] w-[40%] text-center md:w-[20%] rounded-lg ml-4 mb-10 p-4 mt-4">
+        <p className="text-black text-xl font-bold">See Our Products</p>
+      </div>
+
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-6">
         {products && products.map((item) => (
           <div
             key={item.id}
-            className="max-w-md mx-auto w-[90vw]   md:w-fit flex flex-col gap-2   text-gray-800 rounded-md overflow-hidden shadow-md  mb-6 transform transition-transform duration-300 hover:scale-105"
-          > 
-            <div className="relative w-full h-full ">
-            <LazyLoad height={150} width="auto"  threshold={0.95}>
-            <img
-                 className="w-full h-full object-cover rounded-t-md"
+            className="max-w-md mx-auto w-[90vw] md:w-fit flex flex-col gap-2 text-gray-800 rounded-md overflow-hidden shadow-sm mb-6 transform transition-transform duration-300 hover:scale-105"
+          >
+            <div className="relative w-full h-full">
+              <LazyLoad height={150} width="auto" threshold={0.95}>
+                <img
+                  className="w-full h-full object-cover rounded-t-md"
                   src={item.images[0]}
                   alt={item.title}
-                                  />
-           </LazyLoad>
-     
-            
+                />
+              </LazyLoad>
             </div>
-            
+
             <div className="p-4">
               <h2 className="text-xl font-bold text-gray-800">{item.title}</h2>
               <p className="text-sm text-gray-500">{item.description}</p>
@@ -95,17 +93,17 @@ const CategoryProduct = () => {
               <p className="text-gray-500">Stock: {item.stock}</p>
               <p className="text-green-500">Discount: {item.discountPercentage}% off</p>
             </div>
-            <div className="flex justify-end items-center  rounded-b-md p-4">
+            <div className="flex justify-end items-center rounded-b-md p-4">
               {itemId.includes(item.id) ? (
                 <button
-                  className="bg-red-500 text-white px-4 py-3 rounded-full hover:bg-red-600 focus:outline-none"
+                  className="bg-red-500 text-white px-4 py-3 rounded-md hover:bg-red-600 focus:outline-none"
                   onClick={() => handleRemoveFromCart(item)}
                 >
                   Remove
                 </button>
               ) : (
                 <button
-                  className="bg-blue-500 text-white px-4 py-3 rounded-full hover:bg-blue-800 focus:outline-none"
+                  className="bg-black text-white px-4 py-3 rounded-md hover:bg-opacity-[0.8] focus:outline-none"
                   onClick={() => handleAddToCart(item)}
                 >
                   Add to Cart
