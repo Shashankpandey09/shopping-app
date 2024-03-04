@@ -11,9 +11,11 @@ const Search = () => {
   const dispatch=useDispatch();
   const navigate=useNavigate(); 
   return (
-    <><div className="container mx-auto p-4">
-        <h2 className="text-3xl font-bold inline mx-4 text-black mb-4">Search Results:</h2>
+    <><div className="bg-black text-white  container mx-auto p-4 overflow-hidden">
+       <div className="mb-10 flex justify-between">
+       <h2 className="text-3xl font-bold inline mx-4 mb-4">Search Results:</h2>
         <button className="text-bg py-3 px-3 rounded-md bg-green-400" onClick={()=>navigate(-1)}>HomePage</button>
+       </div>
         {search.products == false ? (
           <div className="text-red-500 text-center w-screen">
             <p>NO products found with this entry</p>

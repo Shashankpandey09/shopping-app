@@ -21,6 +21,9 @@ const CategoryProduct = () => {
     toast.success('Item added to cart', {
       position: 'top-right',
       autoClose: 1000,
+      style: {
+        marginTop:window.innerWidth<=768? '50%':'0%', // Set the vertical offset to 40% from the top
+      },
       hideProgressBar: false,
       newestOnTop: false,
       closeOnClick: true,
@@ -39,6 +42,9 @@ const CategoryProduct = () => {
       position: 'top-right',
       autoClose: 1000,
       hideProgressBar: false,
+      style: {
+        marginTop:window.innerWidth<=768? '50%':'0%', // Set the vertical offset to 40% from the top
+      },
       newestOnTop: false,
       closeOnClick: true,
       rtl: false,
@@ -51,10 +57,11 @@ const CategoryProduct = () => {
   };
 
   return (
-    <div className="bg-black text-white">
-      <Caro />
-
-      <div className="bg-gray-900 w-[40%] text-center md:w-[20%] rounded-lg ml-4 p-4 mt-4">
+    <div className="bg-black text-white overflow-hidden md:overflow-auto">
+   <div className="hidden md:block">
+  <Caro />
+</div>
+      <div className="bg-gray-900 w-[40%] text-center md:w-[20%] rounded-lg ml-4 mb-10 p-4 mt-4">
         <p className="text-white text-xl font-bold">See Our Products</p>
       </div>
      
