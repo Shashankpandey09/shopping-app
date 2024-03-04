@@ -25,7 +25,7 @@ const Navbar = ({handle}) => {
           <p className="text-2xl font-bold ml-2  text-white  ">Shoppy</p></Link>
         </div>
         <div className="flex items-center justify-between">
-          <div className="search mr-4 bg-white flex justify-end  rounded-md w-96 shadow-md  hover:shadow-red-700 transition-shadow duration-200 ">
+          <div className="search mr-4 bg-white flex justify-end  rounded-md w-[36vw] shadow-md  hover:shadow-red-700 transition-shadow duration-200 ">
             <form onSubmit={handleSubmit} className="flex items-center justify-between w-full ">
             <input type="text" placeholder="Search" required value={input} onChange={(e)=>setInput(e.target.value)} className="outline-none py-2 px-4 rounded-md text-black w-full" />
             <button type="submit">

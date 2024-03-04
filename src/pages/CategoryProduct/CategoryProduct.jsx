@@ -22,7 +22,9 @@ const CategoryProduct = () => {
       position: 'top-right',
       autoClose: 1000,
       style: {
-        marginTop:window.innerWidth<=768? '50%':'0%', // Set the vertical offset to 40% from the top
+        marginTop:window.innerWidth<=768? '20%':'0%', // Set the vertical offset to 40% from the top
+        position:'absolute',
+        left:'20%'
       },
       hideProgressBar: false,
       newestOnTop: false,
@@ -43,7 +45,9 @@ const CategoryProduct = () => {
       autoClose: 1000,
       hideProgressBar: false,
       style: {
-        marginTop:window.innerWidth<=768? '50%':'0%', // Set the vertical offset to 40% from the top
+        marginTop:window.innerWidth<=768? '20%':'0%', // Set the vertical offset to 40% from the top
+        position:'absolute',
+        left:'20%'
       },
       newestOnTop: false,
       closeOnClick: true,
