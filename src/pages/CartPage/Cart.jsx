@@ -1,10 +1,14 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { removeItem } from "../../Slices/Cart/CartSlice";
+import { removeItem,increment } from "../../Slices/Cart/CartSlice";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-const CartItem = ({ product, onRemove }) => {
+
+
+const CartItem = ({ product, onIncrement }) => {
+  const {amount}=useSelector((store)=>store.cart)
+ 
   return (
     <div className="flex items-center pl-0 md:pl-10 w-[50vw] border-b border-gray-300 p-4">
       <img
@@ -17,12 +21,12 @@ const CartItem = ({ product, onRemove }) => {
         <p className="text-gray-600 text-[8px] md:text-[12px]">{product.description}</p>
         <p className="text-gray-800">Price: ${product.price}</p>
       </div>
-      <button
-        className="ml-4 px-4 py-2 rounded-md hover:bg-red-600 bg-black text-white"
-        onClick={() => onRemove(product.id)}
-      >
-        Remove
-      </button>
+      <div>
+      <button className="text-white bg-black outline-none px-3 py-1 rounded-md ">-</button>
+      <span className="mx-2">{amount}</span>
+      <button onClick={onIncrement} className="text-white bg-black outline-none  rounded-md  px-3 py-1">+</button>
+      </div>
+   
     </div>
   );
 };
@@ -30,10 +34,11 @@ const CartItem = ({ product, onRemove }) => {
 const Cart = () => {
   const dispatch = useDispatch();
   const { cartItem } = useSelector((store) => store.cart);
+
   const navigate = useNavigate();
 
-  const handleRemove = (productId) => {
-    dispatch(removeItem(productId));
+  const handleIncrement = (productId) => {
+    dispatch(increment());
   };
 
   const calculateSubtotal = () => {
@@ -73,7 +78,7 @@ const Cart = () => {
       {cartItem.length !== 0 ? (
         <>
           {cartItem.map((product) => (
-            <CartItem key={product.id} product={product} onRemove={handleRemove} />
+            <CartItem key={product.id} product={product} onIncrement={handleIncrement} />
           ))}
         </>
       ) : (

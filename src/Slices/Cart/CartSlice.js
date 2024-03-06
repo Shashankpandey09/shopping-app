@@ -7,7 +7,7 @@ const savedItemId=JSON.parse(localStorage.getItem('id'))||[];
 
 const initialState = {
   cartItem: savedItems,
-  amount: 0,
+  amount: 1,
   total: 0,
   itemId: savedItemId,
   searchItem: [],
@@ -19,7 +19,9 @@ export const cartSlice = createSlice({
   initialState,
   reducers: {
     AddItem: (state, action) => {
+      
       state.cartItem.push(action.payload);
+      console.log({...action.payload,amount:state.amount})
       state.itemId=[...state.itemId,action.payload.id]
       localStorage.setItem("cart",JSON.stringify(state.cartItem))
       localStorage.setItem("id",JSON.stringify(state.itemId))
@@ -40,6 +42,7 @@ export const cartSlice = createSlice({
 
     increment: (state, { payload }) => {
       // Handle increment logic if needed
+      state.amount+=1;
     },
 
     decrease: (state, { payload }) => {
