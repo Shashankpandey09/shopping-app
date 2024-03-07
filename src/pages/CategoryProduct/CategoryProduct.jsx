@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { homeProducts } from "../../Slices/Homepage/homepageSlice";
-import { AddItem, removeItem } from "../../Slices/Cart/CartSlice";
+import { AddItem,  removeItem } from "../../Slices/Cart/CartSlice";
 import { toast, ToastContainer, Zoom } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Caro from "../../Components/caros/Caro";
@@ -15,6 +15,7 @@ const CategoryProduct = () => {
   useEffect(() => {
     dispatch(homeProducts());
   }, [dispatch]);
+ 
 
   const handleAddToCart = (item) => {
     dispatch(AddItem(item));
@@ -23,8 +24,7 @@ const CategoryProduct = () => {
       autoClose: 1000,
       style: {
         marginTop: window.innerWidth <= 768 ? '20%' : '0%',
-        position: 'absolute',
-        left: '20%'
+    
       },
       hideProgressBar: false,
       newestOnTop: false,
@@ -46,8 +46,7 @@ const CategoryProduct = () => {
       hideProgressBar: false,
       style: {
         marginTop: window.innerWidth <= 768 ? '20%' : '0%',
-        position: 'absolute',
-        left: '20%'
+      
       },
       newestOnTop: false,
       closeOnClick: true,
@@ -65,7 +64,7 @@ const CategoryProduct = () => {
       <div className="hidden md:block">
         <Caro />
       </div>
-      <div className="bg-[rgb(221,177,114)] w-[40%] text-center md:w-[20%] rounded-lg ml-4 mb-10 p-4 mt-4">
+      <div className="bg-[rgb(221,177,114)] w-[40%] text-center md:w-[20%] rounded-lg ml-4 mb-10 p-4 mt-[150px]  md:mt-4">
         <p className="text-black text-xl font-bold">See Our Products</p>
       </div>
 

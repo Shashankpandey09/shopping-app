@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import { SearchProducts } from "../../Slices/Homepage/homepageSlice";
 const Navbar = ({handle}) => {
   const [input,setInput]=useState('');
-  const { amount } = useSelector((store) => store.cart);
+  const { cartItem } = useSelector((store) => store.cart);
  const navigate=useNavigate();
   const dispatch=useDispatch();
   const handleSubmit=(e)=>{
@@ -14,8 +14,15 @@ const Navbar = ({handle}) => {
     dispatch(SearchProducts(input));
      navigate('/Search');
   }
+  const totalItem=()=>{
+    let total=0
+   cartItem.forEach((basketItem)=>{
+     total+= basketItem.amount
+    })
+    return total
+  }
     return (
-      <div className="flex justify-around shadow-lg items-center bg-black h-20 p-4 sticky ">
+      <div className="flex justify-around shadow-lg items-center bg-black h-20 p-4 z-10 w-screen  fixed ">
         
         <div className="flex items-center cursor-pointer  text-black" >
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28" fill="white" onClick={()=>dispatch(openSideBar())}>
@@ -48,7 +55,7 @@ const Navbar = ({handle}) => {
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32" fill="rgba(255,255,255,1)">
               <path d="M4.00488 16V4H2.00488V2H5.00488C5.55717 2 6.00488 2.44772 6.00488 3V15H18.4433L20.4433 7H8.00488V5H21.7241C22.2764 5 22.7241 5.44772 22.7241 6C22.7241 6.08176 22.7141 6.16322 22.6942 6.24254L20.1942 16.2425C20.083 16.6877 19.683 17 19.2241 17H5.00488C4.4526 17 4.00488 16.5523 4.00488 16ZM6.00488 23C4.90031 23 4.00488 22.1046 4.00488 21C4.00488 19.8954 4.90031 19 6.00488 19C7.10945 19 8.00488 19.8954 8.00488 21C8.00488 22.1046 7.10945 23 6.00488 23ZM18.0049 23C16.9003 23 16.0049 22.1046 16.0049 21C16.0049 19.8954 16.9003 19 18.0049 19C19.1095 19 20.0049 19.8954 20.0049 21C20.0049 22.1046 19.1095 23 18.0049 23Z"></path>
             </svg>
-            <div className="cart-item w-4 h-4 absolute top-0   rounded-full text-xs bg-white text-black text-center">{amount}</div>
+            <div className="cart-item w-4 h-4 absolute top-0   rounded-full text-xs bg-white text-black text-center">{totalItem()}</div>
             </Link>
             <button className="text-white text-xl" onClick={handle}>logout</button>
           
