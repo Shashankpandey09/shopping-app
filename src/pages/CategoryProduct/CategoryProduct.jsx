@@ -6,6 +6,7 @@ import { toast, ToastContainer, Zoom } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Caro from "../../Components/caros/Caro";
 import LazyLoad from 'react-lazy-load';
+import { Link } from "react-router-dom";
 
 const CategoryProduct = () => {
   const dispatch = useDispatch();
@@ -70,6 +71,7 @@ const CategoryProduct = () => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-6">
         {products && products.map((item) => (
+          <Link key={item.id} to={`/SinglePage/${item.id}`}>
           <div
             key={item.id}
             className="max-w-md mx-auto w-[90vw] md:w-fit flex flex-col gap-2 text-gray-800 rounded-md overflow-hidden shadow-sm mb-6 transform transition-transform duration-300 hover:scale-105"
@@ -110,8 +112,11 @@ const CategoryProduct = () => {
               )}
             </div>
           </div>
+          </Link>
         ))}
+      
       </div>
+    
       <ToastContainer />
     </div>
   );
