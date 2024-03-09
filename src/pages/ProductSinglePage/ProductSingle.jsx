@@ -61,9 +61,12 @@ const ProductSingle = () => {
 
   const handleImageClick = (index, image) => {
     setSelectedImage(index);
-    setLightboxVisible(true);
-    setImage(image)
+    if (image) {
+      setImage(image);
+      setLightboxVisible(true);
+    }
   };
+  
 
   const handleCloseLightbox = () => {
     setLightboxVisible(false);
@@ -129,7 +132,8 @@ const ProductSingle = () => {
             className={`w-12 h-12 md:w-16 md:h-16 object-cover cursor-pointer rounded-lg ${
               selectedImage === index ? 'border-4 border-blue-500' : 'border-2 border-gray-300'
             } mr-2 md:mr-4`}
-            onClick={() => setImage(img)}
+            onClick={() => {setImage(img)
+            setSelectedImage(index)}}
           />
         ))}
       </div>
