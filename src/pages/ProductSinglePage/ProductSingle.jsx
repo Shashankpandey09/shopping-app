@@ -62,6 +62,7 @@ const ProductSingle = () => {
   const handleImageClick = (index, image) => {
     setSelectedImage(index);
     setLightboxVisible(true);
+    setImage(image)
   };
 
   const handleCloseLightbox = () => {
