@@ -60,7 +60,7 @@ const Cart = () => {
       position: 'top-right',
       autoClose: 1000,
       style: {
-        marginTop: window.innerWidth <= 768 ? '20%' : '0%',
+        marginTop: window.innerWidth <= 768 ? '0%' : '0%',
        
       
       },

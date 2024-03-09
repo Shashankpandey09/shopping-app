@@ -25,7 +25,7 @@ const ProductSingle = () => {
       position: 'top-right',
       autoClose: 1000,
       style: {
-        marginTop: window.innerWidth <= 768 ? '20%' : '0%',
+        marginTop: window.innerWidth <= 768 ? '0%' : '0%',
       },
       hideProgressBar: false,
       newestOnTop: false,
@@ -46,7 +46,7 @@ const ProductSingle = () => {
       autoClose: 1000,
       hideProgressBar: false,
       style: {
-        marginTop: window.innerWidth <= 768 ? '20%' : '0%',
+        marginTop: window.innerWidth <= 768 ? '00%' : '0%',
       },
       newestOnTop: false,
       closeOnClick: true,
