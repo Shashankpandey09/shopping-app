@@ -27,8 +27,8 @@ const CartItem = ({ product, onIncrement,handleRemove, deleteItem }) => {
       <span className="mx-2">{product.amount}</span>
       <button onClick={()=>onIncrement(product)} className="text-white bg-black outline-none  rounded-md  px-3 py-1">+</button>
       </div>
-       <div className="hover:text-red-500 cursor-pointer pl-2 ml-2" onClick={()=>deleteItem(product)}>
-       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32" fill="currentColor"><path d="M4 8H20V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V8ZM6 10V20H18V10H6ZM9 12H11V18H9V12ZM13 12H15V18H13V12ZM7 5V3C7 2.44772 7.44772 2 8 2H16C16.5523 2 17 2.44772 17 3V5H22V7H2V5H7ZM9 4V5H15V4H9Z"></path></svg>
+       <div className="hover:text-red-500  cursor-pointer pl-2 ml-2" onClick={()=>deleteItem(product)}>
+       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M4 8H20V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V8ZM6 10V20H18V10H6ZM9 12H11V18H9V12ZM13 12H15V18H13V12ZM7 5V3C7 2.44772 7.44772 2 8 2H16C16.5523 2 17 2.44772 17 3V5H22V7H2V5H7ZM9 4V5H15V4H9Z"></path></svg>
        </div>
     </div>
   );
@@ -94,9 +94,9 @@ const Cart = () => {
           {amount} {cartItem.length === 1 ? "item" : "items"} ships at checkout
         </p>
         {cartItem.length !== 0 && (
-          <div className="bg-[rgb(250,243,233)] shadow-lg rounded-md fixed right-10 top-20 w-[30vw] md:w-[25vw] h-[40vh] p-6">
-            <p className="font-semibold text-2xl mt-2 mb-4 text-gray-800">Summary</p>
-            <p className="flex justify-between text-gray-800">
+          <div className="bg-[rgb(250,243,233)] shadow-lg rounded-md fixed right-1 md:right-10 top-24 md:top-20 w-[40vw] md:w-[25vw] h-[25vh] md:h-[40vh] p-6">
+            <p className="font-semibold text-lg md:text-2xl mt-2 mb-4 text-gray-800">Summary</p>
+            <p className="flex justify-between md:text-xl text-sm text-gray-800">
               Subtotal: <span>${calculateSubtotal().toFixed(2)}</span>
             </p>
             <div className="flex justify-between mb-4 text-gray-800">
@@ -105,7 +105,7 @@ const Cart = () => {
             </div>
             <hr className="w-full border-[1px] border-gray-300 mb-4" />
             <div className="mt-4">
-              <button className="bg-black text-white text-lg py-3 px-6 rounded-md w-full hover:bg-red-600">
+              <button className="bg-black text-white text-sm md:text-lg py-3 px-6 rounded-md w-full hover:bg-red-600">
                 Checkout
               </button>
             </div>
