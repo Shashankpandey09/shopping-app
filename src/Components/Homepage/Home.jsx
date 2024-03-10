@@ -7,6 +7,7 @@ import { calculateTotal } from "../../Slices/Cart/CartSlice";
 import {useDispatch,useSelector } from "react-redux";
 import {closeSideBar} from '../../Slices/Sidebar/Sidebar'
 import { homeProducts } from "../../Slices/Homepage/homepageSlice";
+import { openSideBar } from "../../Slices/Sidebar/Sidebar";
 
 
 const Home = () => {
@@ -34,7 +35,9 @@ const Home = () => {
   }
  },[localStorage.getItem('AuthToken')])
 
-
+const openSideBars=()=>{
+  dispatch(openSideBar())
+}
 
 const handle=()=>{
   localStorage.removeItem('AuthToken')
@@ -54,8 +57,8 @@ const handle=()=>{
 
   return (
     <div className='h-12 md:h-20 w-full text-white'>
-   {<Modal/> }  
- <Navbar handle={handle}/>
+   <Modal/>  
+ <Navbar handle={handle} openSideBars={openSideBars}/>
  <CategoryProduct/>
     </div>
     

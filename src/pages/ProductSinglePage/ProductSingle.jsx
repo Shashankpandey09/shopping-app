@@ -7,7 +7,7 @@ import { toast, ToastContainer, Zoom } from 'react-toastify';
 
 const ProductSingle = () => {
   const { userId } = useParams();
-  const { product } = useSelector((store) => store.page);
+  const { product ,status} = useSelector((store) => store.page);
   const { itemId } = useSelector((store) => store.cart); // Change itemId to items
 
   const dispatch = useDispatch();
@@ -76,6 +76,13 @@ const ProductSingle = () => {
     return null; // or some loading/error component
   }
 
+  if(status=='loading'){
+    return (
+      <div className="flex items-center justify-center bg-black min-h-screen">
+        <div className="loader ease-linear border-4 border-t-4 border-t-red-500 h-24 w-24 animate-spin rounded-full"></div>
+      </div>
+    )
+  }
 
 
   return (

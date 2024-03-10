@@ -27,7 +27,10 @@ const SinglePageSlice = createSlice({
       state.status = 'successful';
       state.product = action.payload;
       console.log(state.product);
-    });
+    }).addCase(getDetails.pending, (state, action)=>{
+      state.status='loading'
+    })
+  
   },
 });
 

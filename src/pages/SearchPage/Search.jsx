@@ -1,36 +1,47 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { AddItem, removeItem } from "../../Slices/Cart/CartSlice";
+import Navbar from "../../Components/Navbar/Navbar";
 import { useNavigate } from "react-router-dom";
-
+import { Link } from "react-router-dom";
+import { openSideBar } from "../../Slices/Sidebar/Sidebar";
+import Modal from "../../Components/Modal/Modal";
 const Search = () => {
-  const { search } = useSelector((store) => store.HomeProduct);
-  const { itemId } = useSelector((store) => store.cart);
+  const { search ,status} = useSelector((store) => store.HomeProduct);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const handle=()=>{
+    localStorage.removeItem('AuthToken')
+    navigate('/')
+    }
+    const openSideBars=()=>{
+      dispatch(openSideBar())
+    }
+    if(status=='loading'){
+      return (
+        <div className="flex items-center justify-center bg-black min-h-screen">
+          <div className="loader ease-linear border-4 border-t-4 border-t-red-500 h-24 w-24 animate-spin rounded-full"></div>
+        </div>
+      )
+    }
 
   return (
-    <div className="bg-peach text-black container mx-auto p-4 overflow-hidden" style={{ backgroundColor: "rgb(247, 232, 229)" }}>
-      <div className="mb-10 flex justify-between">
-        <h2 className="text-3xl font-bold inline mx-4 mb-4">Search Results:</h2>
-        <button
-          className="text-bg py-3 px-3 rounded-md bg-green-400"
-          onClick={() => navigate(-1)}
-        >
-          HomePage
-        </button>
-      </div>
+    <div className="bg-peach text-black container mx-auto overflow-hidden" >
+        <Modal/>
+        <div className="mb-24 "> <Navbar handle={handle} openSideBars={openSideBars}/></div>
+      
       {search.products == false ? (
-        <div className="text-red-500 text-center w-screen">
+        <div className="text-red-500 text-center mt-[40vh] w-screen">
           <p>NO products found with this entry</p>
         </div>
       ) : (
+       
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {search.products &&
             search.products.map((item) => (
+              <Link   key={item.id} to={`/SinglePage/${item.id} `}>
               <div
                 key={item.id}
-                className="bg-white rounded-lg overflow-hidden shadow-sm" style={{ backgroundColor: "rgb(247, 232, 229)" }}
+                className="bg-white rounded-lg overflow-hidden shadow-sm hover:scale-105 transition-all ease-in-out" 
               >
                 <img
                   src={item?.images?.[0]}
@@ -41,23 +52,10 @@ const Search = () => {
                   <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
                   <p className="text-gray-700 mb-2">{item.description}</p>
                   <p className="text-blue-500 font-bold">${item.price}</p>
-                  {itemId.includes(item.id) ? (
-                    <button
-                      className="bg-black text-white px-4 py-2 rounded-full mt-4"
-                      onClick={() => dispatch(removeItem(item.id))}
-                    >
-                      Remove
-                    </button>
-                  ) : (
-                    <button
-                      className="bg-black text-white px-4 py-2 rounded-full mt-4"
-                      onClick={() => dispatch(AddItem(item))}
-                    >
-                      Add to Cart
-                    </button>
-                  )}
+        
                 </div>
               </div>
+              </Link>
             ))}
         </div>
       )}

@@ -1,10 +1,9 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { openSideBar } from "../../Slices/Sidebar/Sidebar";
 import {useDispatch} from "react-redux";
 import { useSelector } from "react-redux";
 import { SearchProducts } from "../../Slices/Homepage/homepageSlice";
-const Navbar = ({handle}) => {
+const Navbar = ({handle,openSideBars}) => {
   const [input,setInput]=useState('');
   const { cartItem } = useSelector((store) => store.cart);
  const navigate=useNavigate();
@@ -25,11 +24,11 @@ const Navbar = ({handle}) => {
       <div className="flex justify-around shadow-lg items-center bg-black h-20 p-4 z-10 w-screen  fixed ">
         
         <div className="flex items-center cursor-pointer  text-black" >
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28" fill="white" onClick={()=>dispatch(openSideBar())}>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="white" onClick={openSideBars}>
             <path d="M3 4H21V6H3V4ZM3 11H21V13H3V11ZM3 18H21V20H3V18Z"></path>
           </svg>
           <Link to="/Home">
-          <p className="text-2xl font-bold ml-2  text-white  ">Shoppy</p></Link>
+          <p className="md:text-2xl text-lg font-bold ml-2 mr-2  text-white  ">Shoppy</p></Link>
         </div>
         <div className="flex items-center justify-between">
           <div className="search mr-4 bg-white flex justify-end  rounded-md w-[36vw] shadow-md  hover:shadow-red-700 transition-shadow duration-200 ">

@@ -12,14 +12,14 @@ const Modal = () => {
 
   return (
     <div
-      className={`h-screen overflow-y-auto fixed opacity-0.9 bg-black wave-animation w-20 md:w-72 modal-scrollbar transition-all ease-in-out duration-300 z-20 ${
+      className={`h-screen overflow-y-auto fixed opacity-0.9 bg-white wave-animation w-36 md:w-72 modal-scrollbar transition-all ease-in-out duration-300 z-20 ${
         SideOpen ? "translate-x-0" : "-translate-x-full"
       }`}
     >
       <div className="p-4 inline">
-        <p className="text-white font-bold mb-4 text-lg inline">All Categories</p>
+        <p className="  text-black font-bold mb-4 text-[0.7rem] uppercase md:text-lg inline">All Categories</p>
         <div
-          className="svg cursor-pointer absolute right-0 inline text-white"
+          className="svg cursor-pointer absolute text-black right-0 inline "
           onClick={() => dispatch(closeSideBar())}
         >
           <svg
@@ -37,7 +37,7 @@ const Modal = () => {
             <div
               key={index}
             
-              className="mb-2 cursor-pointer text-white pl-4 text-lg"
+              className="mb-2 cursor-pointer text-black pl-4 text-sm md:text-lg uppercase border-b border-red-200"
             >
               {category}
             </div>

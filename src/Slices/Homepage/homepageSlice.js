@@ -1,7 +1,7 @@
 import { createSlice,createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 const initialState={
-    isSearched:false,
+    status:'idle',
     cartItem:{},
     search:[]
 }
@@ -35,6 +35,7 @@ export const homepageProductSlice=createSlice({
        
         .addCase(homeProducts.fulfilled,(state,action)=>{
             console.log(action)
+           
             state.cartItem=action.payload;
            
          
@@ -44,13 +45,16 @@ export const homepageProductSlice=createSlice({
           console.log(action.payload)
         })
         .addCase(SearchProducts.fulfilled,(state,action)=>{
-            state.isSearched=true;
+            state.status='success';
             state.search=action.payload;
             console.log(state.search)
         })
         .addCase(SearchProducts.rejected,(state,action)=>{
-            state.isSearched=true;
-            console.log(action.payload)
+            state.status='failed';
+        
+          }). addCase(SearchProducts.pending,(state,action)=>{
+            state.status='loading';
+          
           })
     }
 
