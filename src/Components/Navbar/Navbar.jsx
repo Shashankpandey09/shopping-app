@@ -56,7 +56,7 @@ const Navbar = ({handle,openSideBars}) => {
             </svg>
             <div className="cart-item w-4 h-4 absolute top-0   rounded-full text-xs bg-white text-black text-center">{totalItem()}</div>
             </Link>
-            <button className="text-white text-xl" onClick={handle}>logout</button>
+            {/* <button className="text-white text-xl" onClick={handle}>logout</button> */}
           
           </div>
         </div>

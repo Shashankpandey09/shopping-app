@@ -10,7 +10,7 @@ const Vedio = () => {
     if(loading){
       timeoutId= setTimeout(() => {
         setLoading(false)
-        navigate('/login');
+        navigate('/Home');
       }, 2000);
     }
 

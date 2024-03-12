@@ -24,16 +24,16 @@ const Home = () => {
   },[cartItem])
   
 
- useEffect(()=>{
+// //  useEffect(()=>{
   
-  if(!localStorage.getItem('AuthToken')){
-    setLoad(true)
-    setTimeout(() => {
-      navigate('/')
-    }, 2000)
+// //   if(!localStorage.getItem('AuthToken')){
+// //     setLoad(true)
+// //     setTimeout(() => {
+// //       // navigate('/')
+// //     }, 2000)
     
-  }
- },[localStorage.getItem('AuthToken')])
+// //   }
+//  },[localStorage.getItem('AuthToken')])
 
 const openSideBars=()=>{
   dispatch(openSideBar())
