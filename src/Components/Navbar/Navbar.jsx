@@ -12,7 +12,7 @@ const Navbar = ({ openSideBars }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(SearchProducts(input));
-    navigate(`/Search/${input}`);
+    navigate(`/Search`);
   };
 
   const totalItem = cartItem.reduce((total, basketItem) => total + basketItem.amount, 0);
