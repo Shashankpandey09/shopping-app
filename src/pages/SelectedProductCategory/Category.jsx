@@ -20,7 +20,7 @@ const Category = () => {
       <div className="container mx-auto px-4 pt-24">
         <p className="text-4xl font-semibold text-gray-800 mb-8">{products&&products[0]?.category}</p>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-          {products.map((item) => (
+          {products&&products.map((item) => (
             <Link key={item.id} to={`/SinglePage/${item.id}`}>
               <div className="bg-white rounded-lg overflow-hidden shadow-md transition duration-300 transform hover:scale-105">
                 <div className="relative w-full h-52">
