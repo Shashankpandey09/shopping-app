@@ -9,7 +9,7 @@ export const getCategoryProduct=createAsyncThunk('getCategoryProduct/fetchCatego
 try {
 const resp=await axios(`${url}${car}`)
 const detail=resp.data
-console.log(detail)
+ return detail;
 } catch (error) {
     console.log(error.response);
 }
@@ -22,6 +22,7 @@ export const categoryProductSlice=createSlice({
     extraReducers:(builder)=>{
         builder.addCase(getCategoryProduct.fulfilled,(state,action)=>{
             state.categoryProduct=action.payload;
+            console.log(state.categoryProduct);
         })
     }
 })
