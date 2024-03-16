@@ -11,7 +11,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Vedio />} />
+        <Route path="/" exact element={<Vedio />} />
         {/* Uncomment the line below if you want to include the login route */}
         {/* <Route path="/login" element={<Login />} /> */}
         <Route path="/Home" element={<Home />} />

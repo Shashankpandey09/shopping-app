@@ -4,15 +4,29 @@ import LazyLoad from "react-lazy-load";
 import Navbar from "../../Components/Navbar/Navbar";
 import Modal from "../../Components/Modal/Modal";
 import { openSideBar } from "../../Slices/Sidebar/Sidebar";
+import { useParams } from "react-router-dom";
+import { useEffect } from "react";
+import { getCategoryProduct } from "../../Slices/CategoryProductSlice/categoryProductSlice";
 
 const Category = () => {
-  const { categoryProduct: { products } } = useSelector((store) => store.categoryProduct);
-  const dispatch = useDispatch();
+  const { categoryProduct: { products },status } = useSelector((store) => store.categoryProduct);
 
+  const dispatch = useDispatch();
+  const {query}=useParams();
+  useEffect(()=>{
+    dispatch(getCategoryProduct(query))
+  },[query])
+  
   const openSideBars = () => {
     dispatch(openSideBar());
   };
-
+  if (status == 'loading') {
+    return (
+      <div className="flex items-center justify-center bg-black min-h-screen">
+        <div className="loader ease-linear border-4 border-t-4 border-t-red-500 h-24 w-24 animate-spin rounded-full"></div>
+      </div>
+    );
+  }
   return (
     <div className="bg-gray-100 min-h-screen">
       <Modal />

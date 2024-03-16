@@ -45,7 +45,7 @@ const Modal = () => {
             <div 
               key={index}
               onClick={() => {
-                dispatch(getCategoryProduct(category));
+              
                 dispatch(closeSideBar());
                 navigate(`/Product/category/${category}`);
               }}

@@ -13,7 +13,7 @@ const CategoryProduct = () => {
   useEffect(() => {
     dispatch(homeProducts());
   }, [dispatch]);
- 
+
   return (
     <div className="bg-gray-100 min-h-screen text-gray-800 py-12">
       <div className="hidden md:block">
