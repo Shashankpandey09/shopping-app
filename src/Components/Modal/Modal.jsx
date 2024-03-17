@@ -15,12 +15,12 @@ const Modal = () => {
 
   return (
     <div
-      className={`h-screen overflow-y-auto fixed opacity-0.9 bg-white wave-animation w-36 md:w-72 modal-scrollbar transition-all ease-in-out duration-300 z-40 ${
+      className={`h-screen overflow-y-auto fixed opacity-90 bg-white wave-animation w-full md:w-72 modal-scrollbar transition-all ease-in-out duration-300 z-40 ${
         SideOpen ? "translate-x-0" : "-translate-x-full"
       }`}
     >
       <div className="p-4">
-        <p className="text-black font-bold mb-4 text-xs md:text-lg uppercase">All Categories</p>
+        <p className="text-black font-bold mb-4 text-sm md:text-lg uppercase">All Categories</p>
         <div
           className="cursor-pointer absolute text-black right-4 top-4"
           onClick={() => dispatch(closeSideBar())}
@@ -45,7 +45,6 @@ const Modal = () => {
             <div 
               key={index}
               onClick={() => {
-              
                 dispatch(closeSideBar());
                 navigate(`/Product/category/${category}`);
               }}

@@ -1,20 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Navbar from "../../Components/Navbar/Navbar";
-import { useNavigate } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { openSideBar } from "../../Slices/Sidebar/Sidebar";
 import Modal from "../../Components/Modal/Modal";
-
+import { SearchProducts } from "../../Slices/Homepage/homepageSlice";
 const Search = () => {
   const { search, status } = useSelector((store) => store.HomeProduct);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const[itemSearched,setItemSearched]=useSearchParams();
+  const query=itemSearched.get('query');
+ 
+ useEffect(()=>{
+  dispatch(SearchProducts(query))
+ },[query])
+  // const handleLogout = () => {
+  //   localStorage.removeItem('AuthToken');
+  //   navigate('/');
+  // };
 
-  const handleLogout = () => {
-    localStorage.removeItem('AuthToken');
-    navigate('/');
-  };
 
   const openSideBars = () => {
     dispatch(openSideBar());
@@ -31,16 +36,16 @@ const Search = () => {
   return (
     <div className="bg-gray-100 min-h-screen">
       <Modal />
-      <Navbar handle={handleLogout} openSideBars={openSideBars} />
+      <Navbar openSideBars={openSideBars} />
       
       <div className="container mx-auto pt-24 px-4">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {search.products && search.products.length === 0 ? (
+          {search?.products && search.products.length === 0 ? (
             <div className="text-red-500 text-center mt-24 col-span-full">
               <p>No products found with this entry</p>
             </div>
           ) : (
-            search.products.map((item) => (
+            search?.products?.map((item) => (
               <Link key={item.id} to={`/SinglePage/${item.id}`}>
                 <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300">
                   <img

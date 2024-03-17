@@ -27,7 +27,7 @@ const Vedio = () => {
       <div className='overlay w-full h-full bg-black bg-opacity-70 absolute top-0 left-0 ' ></div>
     
       <div className='absolute flex flex-col  justify-center items-center w-full h-full'>
-        <div className='mb-3 text-white text-2xl'>
+        <div className='mb-3 text-white text-center text-2xl'>
           <p>Ah, what a perfect day for shopping!</p>
         </div>
     

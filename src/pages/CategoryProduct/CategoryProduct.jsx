@@ -15,28 +15,28 @@ const CategoryProduct = () => {
   }, [dispatch]);
 
   return (
-    <div className="bg-gray-100 min-h-screen text-gray-800 py-12">
+    <div className="bg-gradient-to-r from-blue-200 via-blue-300 to-blue-400 min-h-screen text-gray-800 py-12">
       <div className="hidden md:block">
         <Caro />
       </div>
-      <div className="bg-yellow-500 w-[60%] md:w-[30%] rounded-lg ml-4 mb-10 p-4 mt-[50px] md:mt-4 text-center">
-        <p className="text-black text-xl font-bold">See Our Products</p>
+      <div className="bg-white bg-opacity-70 w-[60%] md:w-[30%] rounded-lg ml-4 mb-10 p-4 mt-[50px] md:mt-4 text-center shadow-md">
+        <p className="text-black text-3xl font-bold">Discover Our Collection</p>
       </div>
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-6">
           {products && products.map((item) => (
-            <Link key={item.id} to={`/SinglePage/${item.id}`}>
-              <div className="bg-white rounded-lg overflow-hidden shadow-md transition duration-300 transform hover:scale-105">
-                <div className="relative w-full h-52">
+            <Link key={item.id} to={`/SinglePage/${item.id}`} className="flex">
+              <div className="flex flex-col bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition duration-300 w-full">
+                <div className="relative h-64 overflow-hidden">
                   <LazyLoad height={200} threshold={0.95}>
                     <img
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover transition-opacity duration-300 hover:opacity-90"
                       src={item.images[0]}
                       alt={item.title}
                     />
                   </LazyLoad>
                 </div>
-                <div className="p-6">
+                <div className="flex-1 p-4">
                   <h2 className="text-xl font-semibold mb-2">{item.title}</h2>
                   <p className="text-gray-600 mb-4">{item.description}</p>
                   <div className="flex justify-between items-center">
@@ -56,3 +56,4 @@ const CategoryProduct = () => {
 };
 
 export default CategoryProduct;
+
