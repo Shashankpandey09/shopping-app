@@ -78,7 +78,7 @@ const ProductSingle = () => {
 
   if (status === 'loading') {
     return (
-      <div className="flex items-center justify-center bg-gradient-to-r from-blue-200 via-blue-300 to-blue-400 bg-opacity-70 min-h-screen">
+      <div className="flex items-center justify-center  min-h-screen">
         <div className="loader ease-linear border-4 border-t-4 border-t-red-500 h-24 w-24 animate-spin rounded-full"></div>
       </div>
     );
@@ -87,7 +87,7 @@ const ProductSingle = () => {
 
 
   return (
-    <div className="container mx-auto p-4 md:p-8 min-h-screen text-black  bg-gradient-to-r from-blue-200 via-blue-300 to-blue-400 font-thin font-caveat">
+    <div className="container mx-auto p-4 md:p-8 min-h-screen text-black   font-thin font-caveat">
       <div className="flex flex-col md:flex-row">
         <div className="md:w-1/2 relative h-[60vh]">
           <div
