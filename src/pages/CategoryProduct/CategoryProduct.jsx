@@ -15,7 +15,7 @@ const CategoryProduct = () => {
   }, [dispatch]);
 
   return (
-    <div className="bg-gradient-to-r from-blue-200 via-blue-300 to-blue-400 min-h-screen text-gray-800 py-12">
+    <div className="min-h-screen text-gray-800 py-12">
       <div className="hidden md:block">
         <Caro />
       </div>
