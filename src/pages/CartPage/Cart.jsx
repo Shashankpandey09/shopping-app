@@ -9,7 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 const CartItem = ({ product, onIncrement,handleRemove, deleteItem }) => {
    
   return (
-    <div className="flex items-center pl-0 md:pl-10 w-[60vw] border-b border-gray-300 p-4">
+    <div className="flex items-center pl-0 md:pl-10 w-full md:w-[60vw] border-b border-gray-300 p-4">
       <img
         className="w-16 h-16 object-cover mr-4"
         src={product.images && product.images.length > 0 ? product.images[0] : null}
@@ -94,7 +94,7 @@ const Cart = () => {
           {amount} {cartItem.length === 1 ? "item" : "items"} ships at checkout
         </p>
         {cartItem.length !== 0 && (
-          <div className="bg-[rgb(250,243,233)] shadow-lg rounded-md fixed right-1 md:right-10 top-24 md:top-20 w-[40vw] md:w-[25vw] h-[32vh] md:h-auto p-6">
+          <div className="bg-[rgb(250,243,233)] shadow-lg rounded-md md:fixed ml-6 max-sm:bottom-11 md:right-10 w-[85vw] md:top-20  md:w-[25vw] h-[32vh] md:h-auto p-6">
             <p className="font-semibold text-lg md:text-2xl mt-2 mb-4 text-gray-800">Summary</p>
             <p className="flex justify-between md:text-xl text-sm text-gray-800">
               Subtotal: <span>${calculateSubtotal().toFixed(2)}</span>
