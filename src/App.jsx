@@ -4,7 +4,7 @@ import Home from './Components/Homepage/Home';
 import './App.css';
 import Login from './Components/login/Login';
 import Vedio from './Components/VedioPage/Vedio';
-import { CategoryProduct, Cart, Search, ProductSingle } from '../src/pages/index';
+import { Cart, Search, ProductSingle } from '../src/pages/index';
 import Category from './pages/SelectedProductCategory/Category';
 
 function App() {
