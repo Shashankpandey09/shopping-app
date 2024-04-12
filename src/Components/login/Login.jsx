@@ -1,74 +1,65 @@
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { LoginUser } from "../../Slices/Auth/Auth";
-import { fetchData } from "../../Slices/Auth/Auth";
-import { useNavigate } from "react-router-dom";
-import video from '../../assets/vedio.mp4';
+
+import { useState, useRef } from "react";
+import {useNavigate} from 'react-router-dom'
+import { checkValid } from "../../utils/validate";
+import { createUserWithEmailAndPassword} from "firebase/auth";
+import { auth } from "../../utils/firebase";
+import {  signInWithEmailAndPassword } from "firebase/auth";
 
 const Login = () => {
-  const { isLoading, reject } = useSelector((store) => store.auth);
-  const [userName, setName] = useState('');
-  const [password, setPassword] = useState('');
-  const dispatch = useDispatch();
+  const [IsSignUp, setSignUp] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(null);
   const navigate = useNavigate();
+  const email = useRef(null);
+  const password = useRef(null);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    dispatch(LoginUser({ userName, password }));
-    dispatch(fetchData());
-  };
-
-  useEffect(() => {
-    if (localStorage.getItem('AuthToken')) {
-      navigate('/Home');
+  const handleClick = async () => {
+    const emailValue = email.current.value;
+    const passwordValue = password.current.value;
+    const message = checkValid(emailValue, passwordValue);
+    setErrorMessage(message);
+  
+    if (!message) {
+      try {
+        if (IsSignUp) {
+          const userCredential = await createUserWithEmailAndPassword(auth, emailValue, passwordValue);
+          console.log("User signed up successfully:", userCredential.user);
+          navigate("/Home")
+    
+        } else {
+          const userCredential = await signInWithEmailAndPassword(auth, emailValue, passwordValue);
+          navigate("/Home")
+          console.log("User signed in successfully:", userCredential.user);
+        }
+      } catch (error) {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        setErrorMessage(`${errorCode} ${errorMessage}`);
+      }
     }
-  }, [localStorage.getItem('AuthToken')]);
+  };
+  
 
   return (
-    <>
-      <div className="h-screen flex justify-center items-center w-screen relative">
-        <video className='object-cover w-full h-full' src={video} autoPlay preload="auto" loading="lazy" muted loop />
-        <form className="bg-white absolute rounded-lg p-4 md:p-8 flex flex-col shadow-lg w-full md:w-[32rem] animate-fade-in" onSubmit={handleSubmit}>
-          <h2 className="text-3xl md:text-4xl mb-4 text-black">LOGIN</h2>
-
-          <label htmlFor="user" className="text-gray-700 mb-2">
-            UserName
-          </label>
-          <input
-            required
-            className="rounded-md text-black p-2 mb-4 border border-gray-400 focus:outline-none focus:ring focus:border-indigo-500"
-            placeholder="kminchelle"
-            type="text"
-            name="user"
-            value={userName}
-            onChange={(e) => setName(e.target.value)}
-          />
-
-          <label htmlFor="password" className="text-gray-700 mb-2">
-            Password
-          </label>
-          <input
-            required
-            className="rounded-md text-black p-2 mb-4 border border-gray-400 focus:outline-none focus:ring focus:border-indigo-500"
-            placeholder="0lelplR"
-            type="password"
-            name="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-
-          <button
-            type="submit"
-            className="rounded-md text-black p-2 transition duration-300 hover:bg-black hover:text-white focus:outline-none focus:ring focus:border-indigo-700"
-          >
-            Login
-          </button>
-          {isLoading && <h1 className="text-green-500 mt-2">Loading...</h1>}
-          {reject && <h1 className="text-red-500 mt-2">Invalid user Credentials</h1>}
+    <div className="relative bg-gray-800">
+  
+      <div className="absolute inset-0 overflow-hidden z-0">
+    
+      </div>
+      <div className="h-screen flex justify-center items-center">
+        <form onSubmit={(e) => e.preventDefault()} className="rounded-lg p-8  md:w-1/2 lg:w-3/12  w-3/4 bg-black bg-opacity-80 text-white flex flex-col justify-center items-center z-10">
+          {IsSignUp ? <h1 className="font-bold text-3xl py-4 self-start">Sign Up</h1> : <h1 className="font-bold text-3xl py-4 self-start">Sign In</h1>}
+          {IsSignUp && <input type="text" placeholder="Full Name " className="p-4 rounded-sm my-6 w-full bg-gray-700" />}
+          <input ref={email} type="text" placeholder="Email Address " className="p-4 rounded-sm mb-6 w-full bg-gray-700" />
+          <input ref={password} type="password" placeholder="Password " className="p-4 rounded-sm mb-6 w-full bg-gray-700" />
+          <p className="text-red-700 self-start text-md py-2 font-semibold">{errorMessage}</p>
+          <button onClick={handleClick} className="p-4 my-4 w-full bg-red-700 rounded-sm">{IsSignUp ? "Sign Up" : "Sign In"}</button>
+          <p className="self-start pb-6">{IsSignUp ? "Already Have An Account?" : "New to Netflix?"} <span onClick={() => setSignUp(!IsSignUp)} className="hover:text-gray-400 hover:underline cursor-pointer">{IsSignUp ? "Sign In Now" : "Sign Up"}</span></p>
         </form>
       </div>
-    </>
+    </div>
   );
 };
 
 export default Login;
+
