@@ -53,6 +53,7 @@ const Login = () => {
           <input ref={email} type="text" placeholder="Email Address " className="p-4 rounded-sm mb-6 w-full bg-gray-700" />
           <input ref={password} type="password" placeholder="Password " className="p-4 rounded-sm mb-6 w-full bg-gray-700" />
           <p className="text-red-700 self-start text-md py-2 font-semibold">{errorMessage}</p>
+           {!errorMessage&&<span className="text-sm text-gray-500 capitalize">Password must contain at least one numeral,special characters and should be capatilised (minimum length:8)</span>}
           <button onClick={handleClick} className="p-4 my-4 w-full bg-red-700 rounded-sm">{IsSignUp ? "Sign Up" : "Sign In"}</button>
           <p className="self-start pb-6">{IsSignUp ? "Already Have An Account?" : "New to Netflix?"} <span onClick={() => setSignUp(!IsSignUp)} className="hover:text-gray-400 hover:underline cursor-pointer">{IsSignUp ? "Sign In Now" : "Sign Up"}</span></p>
         </form>
