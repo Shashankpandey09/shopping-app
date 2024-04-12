@@ -1,6 +1,10 @@
 {
   "rewrites": [
     { "source": "/(.*)", "destination": "/" }
-  ]
-
+  ],
+  "build": {
+    "env": {
+      "REACT_APP_FIREBASE_API_KEY": "AIzaSyBguvkZ1EWuokW1_cFXRFJzQ8ToBqIoHUo"
+    }
+  }
 }
