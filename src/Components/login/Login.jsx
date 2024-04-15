@@ -1,5 +1,5 @@
 
-import { useState, useRef,useEffect } from "react";
+import { useState, useRef } from "react";
 import {useNavigate} from 'react-router-dom'
 import { checkValid } from "../../utils/validate";
 import { createUserWithEmailAndPassword} from "firebase/auth";
@@ -12,10 +12,7 @@ const Login = () => {
   const navigate = useNavigate();
   const email = useRef(null);
   const password = useRef(null);
-   useEffect(()=>{
-     if(auth.user!==null){
-navigate("/Home");
-   },[])
+ 
   const handleClick = async () => {
     const emailValue = email.current.value;
     const passwordValue = password.current.value;
