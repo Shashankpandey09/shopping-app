@@ -145,24 +145,24 @@ const ProductSingle = () => {
           />
         ))}
       </div>
-
       {lightboxVisible && (
-        <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-75 flex justify-center items-center z-50">
-          <div className="relative">
-            <span
-              className="absolute top-4 right-4 text-red-500 text-4xl cursor-pointer"
-              onClick={handleCloseLightbox}
-            >
-              &times;
-            </span>
-            <img
-              src={image}
-              alt="Lightbox"
-              className="max-w-full max-h-full rounded-lg shadow-lg"
-            />
-          </div>
-        </div>
-      )}
+  <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-75 flex justify-center items-center z-50">
+    <div className="relative max-w-4xl max-h-4xl mx-auto">
+      <button
+        className="absolute top-4 right-4 text-red-500 text-4xl cursor-pointer focus:outline-none"
+        onClick={handleCloseLightbox}
+      >
+        &times;
+      </button>
+      <img
+        src={image}
+        alt="Lightbox"
+        className="w-full h-auto max-h-screen rounded-lg shadow-lg"
+      />
+    </div>
+  </div>
+)}
+
       <ToastContainer />
     </div>
   );

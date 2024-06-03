@@ -22,7 +22,7 @@ export const categoryProductSlice=createSlice({
     extraReducers:(builder)=>{
         builder.addCase(getCategoryProduct.fulfilled,(state,action)=>{
             state.categoryProduct=action.payload;
-            console.log(state.categoryProduct);
+         
             state.status='success'
         })
         .addCase(getCategoryProduct.pending,(state)=>{

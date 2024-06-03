@@ -11,7 +11,7 @@ import { openSideBar } from "../../Slices/Sidebar/Sidebar";
 
 
 const Home = () => {
-  const navigate = useNavigate();
+
   const dispatch=useDispatch();
   const {cartItem}=useSelector((store)=>store.cart);
   const[load,setLoad]=useState(false)

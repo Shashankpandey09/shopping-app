@@ -1,17 +1,16 @@
 import { closeSideBar, getProducts } from "../../Slices/Sidebar/Sidebar";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { getCategoryProduct } from "../../Slices/CategoryProductSlice/categoryProductSlice";
 import { useNavigate } from "react-router-dom";
 
 const Modal = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { SideOpen, products } = useSelector((store) => store.sidebar);
- 
+
   useEffect(() => {
     dispatch(getProducts());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div
@@ -41,18 +40,22 @@ const Modal = () => {
           </svg>
         </div>
         <div className="category mt-4">
-          {products.map((category, index) => (
-            <div 
-              key={index}
-              onClick={() => {
-                dispatch(closeSideBar());
-                navigate(`/Product/category/${category}`);
-              }}
-              className="mb-2 cursor-pointer text-black pl-4 text-sm md:text-lg uppercase border-b border-gray-200 hover:text-red-500 transition-colors duration-300"
-            >
-              {category}
-            </div>
-          ))}
+          {Array.isArray(products) && products.length > 0 ? (
+            products.map((category, index) => (
+              <div
+                key={index}
+                onClick={() => {
+                  dispatch(closeSideBar());
+                  navigate(`/Product/category/${category.slug}`);
+                }}
+                className="mb-2 cursor-pointer text-black pl-4 text-sm md:text-lg uppercase border-b border-gray-200 hover:text-red-500 transition-colors duration-300"
+              >
+                {category.slug}
+              </div>
+            ))
+          ) : (
+            <p className="text-black">No categories available.</p>
+          )}
         </div>
       </div>
       <div className="wave-animation bg-yellow-400"></div>

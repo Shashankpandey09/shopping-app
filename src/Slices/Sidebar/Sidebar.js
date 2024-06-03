@@ -36,6 +36,7 @@ try {
         .addCase(getProducts.fulfilled,(state,action)=>{
           
             state.products=action.payload;
+            console.log(state.products)
             state.status='fulfilled'
         })
         .addCase(getProducts.rejected,(state,action)=>{
