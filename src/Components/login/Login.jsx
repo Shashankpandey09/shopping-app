@@ -12,7 +12,10 @@ const Login = () => {
   const navigate = useNavigate();
   const email = useRef(null);
   const password = useRef(null);
-
+   useEffect(()=>{
+     if(auth.user!==null){
+navigate("/Home");}
+   },[])
   const handleClick = async () => {
     const emailValue = email.current.value;
     const passwordValue = password.current.value;
