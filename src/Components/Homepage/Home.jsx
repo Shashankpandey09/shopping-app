@@ -40,7 +40,7 @@ const openSideBars=()=>{
 }
 
 const handle=()=>{
-  localStorage.removeItem('AuthToken')
+  
   setLoad(true);
   }
 

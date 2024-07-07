@@ -5,6 +5,8 @@ import { checkValid } from "../../utils/validate";
 import { createUserWithEmailAndPassword} from "firebase/auth";
 import { auth } from "../../utils/firebase";
 import {  signInWithEmailAndPassword } from "firebase/auth";
+import { store } from "../../Slices/UserData/userData";
+import { useDispatch } from "react-redux";
 
 const Login = () => {
   const [IsSignUp, setSignUp] = useState(false);
@@ -12,9 +14,11 @@ const Login = () => {
   const navigate = useNavigate();
   const email = useRef(null);
   const password = useRef(null);
+  const dispatch=useDispatch();
    useEffect(()=>{
-     if(auth.user!==null){
-navigate("/Home");}
+     if(auth.currentUser!==null){
+navigate("/Home");
+}
    },[])
   const handleClick = async () => {
     const emailValue = email.current.value;
@@ -27,12 +31,14 @@ navigate("/Home");}
         if (IsSignUp) {
           const userCredential = await createUserWithEmailAndPassword(auth, emailValue, passwordValue);
           console.log("User signed up successfully:", userCredential.user);
+          dispatch(store(userCredential.user))
           navigate("/Home")
     
         } else {
           const userCredential = await signInWithEmailAndPassword(auth, emailValue, passwordValue);
-          navigate("/Home")
+          dispatch(store(userCredential.user))
           console.log("User signed in successfully:", userCredential.user);
+          navigate("/Home");
         }
       } catch (error) {
         const errorCode = error.code;

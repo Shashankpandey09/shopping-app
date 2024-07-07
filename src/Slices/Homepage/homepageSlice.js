@@ -35,7 +35,7 @@ export const homepageProductSlice=createSlice({
         builder
        
         .addCase(homeProducts.fulfilled,(state,action)=>{
-            console.log(action)
+         
            
             state.cartItem=action.payload;
            
