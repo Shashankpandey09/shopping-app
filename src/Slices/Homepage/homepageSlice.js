@@ -37,7 +37,7 @@ export const homepageProductSlice=createSlice({
         .addCase(homeProducts.fulfilled,(state,action)=>{
          
            
-            state.cartItem=action.payload;
+            state.cartItem={...action.payload};
            
          
         })
