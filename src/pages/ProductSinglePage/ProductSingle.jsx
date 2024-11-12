@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { getDetails } from "../../Slices/Singlepages/Singlepage";
 import { AddItem, removeItem } from "../../Slices/Cart/CartSlice";
 import { toast, ToastContainer, Zoom } from 'react-toastify';
+import Skeleton from "react-loading-skeleton";
+import 'react-loading-skeleton/dist/skeleton.css'
 
 const ProductSingle = () => {
   const { userId } = useParams();
@@ -94,11 +96,19 @@ const ProductSingle = () => {
             className="absolute top-0 left-0 w-full h-full bg-opacity-75 rounded-lg"
             onClick={() => handleImageClick(selectedImage, image)}
           ></div>
-          <img
-            src={image || product.thumbnail}
-            alt={product.title}
-            className="w-full h-full object-cover rounded-lg shadow-lg cursor-pointer"
-          />
+      <div className="w-full h-full relative">
+  {image || product.thumbnail ? (
+    <img
+      src={image || product.thumbnail}
+      alt={product.title}
+      loading="lazy"
+      className="w-full h-full object-cover absolute top-0 -z-20 rounded-lg shadow-lg cursor-pointer"
+    />
+  ) : (
+    <Skeleton baseColor="#202020" highlightColor="#444" />
+  )}
+</div>
+
         </div>
         <div className="md:w-1/2 md:pl-8">
           <h2 className="text-2xl md:text-4xl mb-2">{product.title}</h2>

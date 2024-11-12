@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import video from '../../assets/vedio.mp4';
+import img from '../../assets/pexels-mikhail-nilov-6613914.jpg';
 import { useNavigate } from 'react-router-dom';
 
 const Vedio = () => {
@@ -24,7 +24,7 @@ const Vedio = () => {
   return (
    
     <div className='w-screen h-screen relative'>
-      <div className='overlay w-full h-full bg-black bg-opacity-70 absolute top-0 left-0 ' ></div>
+      <div className='overlay w-full h-full bg-black bg-opacity-50 absolute top-0 left-0 ' ></div>
     
       <div className='absolute flex flex-col  justify-center items-center w-full h-full'>
         <div className='mb-3 text-white text-center text-2xl'>
@@ -37,7 +37,7 @@ const Vedio = () => {
      
       </div>
   
-    <video className='object-cover w-full h-full' src={video} autoPlay preload="auto" loading="lazy" muted loop/>
+    <img className='object-cover w-full h-full' src={img} />
     </div>
    
   )

@@ -3,7 +3,8 @@ import axios from "axios";
 const url='https://dummyjson.com/products/category/'
 const initialState={
     categoryProduct:[],
-    status:'idle',
+    status:'loading',
+    
 }
 export const getCategoryProduct=createAsyncThunk('getCategoryProduct/fetchCategoryProduct',async(category)=>{
 try {

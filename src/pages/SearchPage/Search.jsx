@@ -9,23 +9,18 @@ import { SearchProducts } from "../../Slices/Homepage/homepageSlice";
 const Search = () => {
   const { search, status } = useSelector((store) => store.HomeProduct);
   const dispatch = useDispatch();
-  const[itemSearched,setItemSearched]=useSearchParams();
-  const query=itemSearched.get('query');
- 
- useEffect(()=>{
-  dispatch(SearchProducts(query))
- },[query])
-  // const handleLogout = () => {
-  //   localStorage.removeItem('AuthToken');
-  //   navigate('/');
-  // };
+  const [itemSearched, setItemSearched] = useSearchParams();
+  const query = itemSearched.get("query");
 
+  useEffect(() => {
+    dispatch(SearchProducts(query));
+  }, [query]);
 
   const openSideBars = () => {
     dispatch(openSideBar());
   };
 
-  if (status === 'loading') {
+  if (status === "loading") {
     return (
       <div className="flex items-center justify-center bg-black min-h-screen">
         <div className="loader ease-linear border-4 border-t-4 border-t-red-500 h-24 w-24 animate-spin rounded-full"></div>
@@ -37,7 +32,7 @@ const Search = () => {
     <div className="bg-gray-100 min-h-screen">
       <Modal />
       <Navbar openSideBars={openSideBars} />
-      
+
       <div className="container mx-auto pt-24 px-4">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {search?.products && search.products.length === 0 ? (
@@ -59,7 +54,9 @@ const Search = () => {
                     <p className="text-blue-500 font-bold">${item.price}</p>
                     <div className="flex justify-between items-center">
                       <p className="text-gray-600">Rating: {item.rating}</p>
-                      <p className="text-green-500">Discount: {item.discountPercentage}% off</p>
+                      <p className="text-green-500">
+                        Discount: {item.discountPercentage}% off
+                      </p>
                     </div>
                   </div>
                 </div>
