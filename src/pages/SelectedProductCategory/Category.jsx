@@ -36,7 +36,7 @@ const Category = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
           {products&&products.map((item) => (
             <Link key={item.id} to={`/SinglePage/${item.id}`}>
-              <div className="bg-white rounded-lg overflow-hidden shadow-md transition duration-300 transform hover:scale-105">
+              <div className="bg-white rounded-lg overflow-hidden shadow-sm  shadow-black transition duration-300 transform hover:scale-105">
                 <div className="relative w-full h-52">
                   <LazyLoad height={200} threshold={0.95}>
                     <img
