@@ -42,7 +42,7 @@ const Search = () => {
           ) : (
             search?.products?.map((item) => (
               <Link key={item.id} to={`/SinglePage/${item.id}`}>
-                <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300">
+                <div className="bg-white rounded-lg overflow-hidden shadow-sm shadow-black hover:shadow-lg transition duration-300">
                   <img
                     src={item.images?.[0]}
                     alt={item.title}
