@@ -8,10 +8,9 @@ import { getAuth } from "firebase/auth";
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const ApiKEY=import.meta.env.VITE_FIREBASE_API_KEY
-console.log("Firebase API Key:", ApiKEY);
+
 const firebaseConfig = {
-  apiKey: `${ApiKEY}`,
+  apiKey: "AIzaSyBguvkZ1EWuokW1_cFXRFJzQ8ToBqIoHUo",
   authDomain: "shoppy-9032c.firebaseapp.com",
   projectId: "shoppy-9032c",
   storageBucket: "shoppy-9032c.firebasestorage.app",
